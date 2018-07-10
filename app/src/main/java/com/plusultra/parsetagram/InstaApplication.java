@@ -11,7 +11,6 @@ public class InstaApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         // Use for troubleshooting -- remove this line for production
         Parse.setLogLevel(Parse.LOG_LEVEL_DEBUG);
 
