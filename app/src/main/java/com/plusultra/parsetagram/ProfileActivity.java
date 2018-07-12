@@ -30,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
                 ParseUser.logOut();
                 ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
 
-                final Intent intent = new Intent(ProfileActivity.this, InstaActivity.class);
+                final Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

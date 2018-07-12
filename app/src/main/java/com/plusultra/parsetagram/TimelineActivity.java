@@ -31,7 +31,7 @@ public class TimelineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ParseUser user = ParseUser.getCurrentUser();
         if (user == null) {
-            final Intent intent = new Intent(TimelineActivity.this, InstaActivity.class);
+            final Intent intent = new Intent(TimelineActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
         }
@@ -92,7 +92,7 @@ public class TimelineActivity extends AppCompatActivity {
                 if (e == null){
                     for (int i = 0; i < objects.size(); i++){
                         posts.add(0, objects.get(i));
-                        instaAdapter.notifyItemInserted(posts.size() - 1);
+                        instaAdapter.notifyItemInserted(0);
                         // Log.d("HomeActivity", "Post id: [" + i + "] = " + objects.get(i).getDescription() + "\nusername = " + objects.get(i).getUser().getUsername());
                     }
                 } else {

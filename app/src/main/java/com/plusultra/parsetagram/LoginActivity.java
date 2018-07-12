@@ -12,7 +12,7 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-public class InstaActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private EditText usernameIn, passwordIn;
     private Button loginBtn;
     @Override
@@ -22,7 +22,7 @@ public class InstaActivity extends AppCompatActivity {
         ParseUser currentUser = ParseUser.getCurrentUser();
 
         if (currentUser != null){
-            final Intent intent = new Intent(InstaActivity.this, TimelineActivity.class);
+            final Intent intent = new Intent(LoginActivity.this, TimelineActivity.class);
             startActivity(intent);
             finish();
         }
@@ -51,7 +51,7 @@ public class InstaActivity extends AppCompatActivity {
                 if (e == null) {
                     Log.d("LoginActivity", "Login successful");
 
-                    final Intent intent = new Intent(InstaActivity.this, TimelineActivity.class);
+                    final Intent intent = new Intent(LoginActivity.this, TimelineActivity.class);
                     startActivity(intent);
                 } else {
                     Log.e("LoginActivity", "Login failure");
