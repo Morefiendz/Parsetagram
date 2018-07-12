@@ -18,6 +18,15 @@ public class InstaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ParseUser currentUser = ParseUser.getCurrentUser();
+
+        if (currentUser != null){
+            final Intent intent = new Intent(InstaActivity.this, TimelineActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         setContentView(R.layout.activity_insta);
 
         usernameIn = findViewById(R.id.etUsername);
@@ -31,7 +40,6 @@ public class InstaActivity extends AppCompatActivity {
                 final String password = passwordIn.getText().toString();
 
                 logIn(username, password);
-                finish();
             }
         });
     }
@@ -43,12 +51,14 @@ public class InstaActivity extends AppCompatActivity {
                 if (e == null) {
                     Log.d("LoginActivity", "Login successful");
 
-                    final Intent intent = new Intent(InstaActivity.this, HomeActivity.class);
+                    final Intent intent = new Intent(InstaActivity.this, TimelineActivity.class);
                     startActivity(intent);
                 } else {
                     Log.e("LoginActivity", "Login failure");
                     e.printStackTrace();
                 }
+
+                finish();
             }
         });
     }

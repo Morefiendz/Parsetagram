@@ -3,6 +3,8 @@
     package="com.plusultra.parsetagram">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".InstaApplication"
@@ -22,7 +24,9 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".TimelineActivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>
