@@ -2,6 +2,7 @@ package com.plusultra.parsetagram;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +26,7 @@ public class TimelineActivity extends AppCompatActivity {
     ArrayList<Post> posts;
     RecyclerView rvPosts;
     private final int REQUEST_CODE = 20;
+    private SwipeRefreshLayout swipeContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +65,39 @@ public class TimelineActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final Intent intent = new Intent(TimelineActivity.this, ProfileActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
+
+        // Lookup the swipe container view
+        swipeContainer = findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                loadTopPosts();
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                swipeContainer.setRefreshing(false);
+                fetchTimelineAsync(0);
+            }
+        });
+
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+    }
+
+    public void fetchTimelineAsync(int page) {
+        // Remember to CLEAR OUT old items before appending in the new ones
+        instaAdapter.clear();
+        // ...the data has come back, add new items to your adapter...
+        instaAdapter.addAll(posts);
+        // Now we call setRefreshing(false) to signal refresh has finished
+        swipeContainer.setRefreshing(false);
     }
 
     @Override
@@ -106,6 +138,5 @@ public class TimelineActivity extends AppCompatActivity {
         final Intent intent;
         intent = new Intent(TimelineActivity.this, PostActivity.class);
         startActivity(intent);
-        finish();
     }
 }

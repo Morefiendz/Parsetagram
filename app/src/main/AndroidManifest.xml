@@ -27,7 +27,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TimelineActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".DetailActivity"></activity>
     </application>
 
 </manifest>

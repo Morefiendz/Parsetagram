@@ -29,13 +29,12 @@ import java.io.File;
 
 public class PostActivity extends AppCompatActivity {
     private EditText descriptionIn;
-    private Button createButton, refreshButton, postButton;
+    private Button createButton, postButton;
     public Uri file;
     public File photoFile;
     public final String APP_TAG = "Xstagram";
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
     public String photoFileName = "photo.jpg";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,21 +42,12 @@ public class PostActivity extends AppCompatActivity {
 
         descriptionIn = findViewById(R.id.etDescription);
         createButton = findViewById(R.id.btnCreate);
-        refreshButton = findViewById(R.id.btnRefresh);
-        createButton = findViewById(R.id.btnCreate);
         postButton = findViewById(R.id.btnPost);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             createButton.setEnabled(false);
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         }
-
-//        refreshButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                loadTopPosts();
-//            }
-//        });
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
