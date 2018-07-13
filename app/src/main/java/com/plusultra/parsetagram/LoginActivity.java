@@ -14,7 +14,7 @@ import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText usernameIn, passwordIn;
-    private Button loginBtn;
+    private Button loginBtn, signUpBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,11 +27,12 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 
-        setContentView(R.layout.activity_insta);
+        setContentView(R.layout.activity_login);
 
         usernameIn = findViewById(R.id.etUsername);
         passwordIn = findViewById(R.id.etPassword);
         loginBtn = findViewById(R.id.btnLogin);
+        signUpBtn = findViewById(R.id.btnSignUp);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,15 @@ public class LoginActivity extends AppCompatActivity {
                 final String password = passwordIn.getText().toString();
 
                 logIn(username, password);
+            }
+        });
+
+        signUpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

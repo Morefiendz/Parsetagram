@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TimelineActivity extends AppCompatActivity {
-    HomeActivity home = new HomeActivity();
+    PostActivity home = new PostActivity();
     Button create, profile;
     InstaAdapter instaAdapter;
     ArrayList<Post> posts;
@@ -93,7 +93,7 @@ public class TimelineActivity extends AppCompatActivity {
                     for (int i = 0; i < objects.size(); i++){
                         posts.add(0, objects.get(i));
                         instaAdapter.notifyItemInserted(0);
-                        // Log.d("HomeActivity", "Post id: [" + i + "] = " + objects.get(i).getDescription() + "\nusername = " + objects.get(i).getUser().getUsername());
+                        // Log.d("PostActivity", "Post id: [" + i + "] = " + objects.get(i).getDescription() + "\nusername = " + objects.get(i).getUser().getUsername());
                     }
                 } else {
                     e.printStackTrace();
@@ -104,7 +104,7 @@ public class TimelineActivity extends AppCompatActivity {
 
     private void makeAPost(){
         final Intent intent;
-        intent = new Intent(TimelineActivity.this, HomeActivity.class);
+        intent = new Intent(TimelineActivity.this, PostActivity.class);
         startActivity(intent);
         finish();
     }

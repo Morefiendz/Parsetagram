@@ -63,9 +63,8 @@ public class InstaAdapter extends RecyclerView.Adapter<InstaAdapter.ViewHolder>{
             super(itemView);
 
             //findByViewId lookups
-
             ivPicture = itemView.findViewById(R.id.ivPic);
-            tvUser = itemView.findViewById(R.id.tvUser);
+            tvUser = itemView.findViewById(R.id.etUser);
             tvCaption = itemView.findViewById(R.id.tvCaption);
         }
     }

@@ -27,7 +27,7 @@ import com.plusultra.parsetagram.model.Post;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
-public class HomeActivity extends AppCompatActivity {
+public class PostActivity extends AppCompatActivity {
     private EditText descriptionIn;
     private Button createButton, refreshButton, postButton;
     public Uri file;
@@ -39,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_post);
 
         descriptionIn = findViewById(R.id.etDescription);
         createButton = findViewById(R.id.btnCreate);
@@ -76,7 +76,7 @@ public class HomeActivity extends AppCompatActivity {
 //        // wrap File object into a content provider
 //        // required for API >= 24
 //        // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-//        Uri fileProvider = FileProvider.getUriForFile(HomeActivity.this, "com.codepath.fileprovider", photoFile);
+//        Uri fileProvider = FileProvider.getUriForFile(PostActivity.this, "com.codepath.fileprovider", photoFile);
 //        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
@@ -108,7 +108,7 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         createPost(descriptionIn.getText().toString(), parseFile, ParseUser.getCurrentUser());
-                        final Intent intent = new Intent(HomeActivity.this, TimelineActivity.class);
+                        final Intent intent = new Intent(PostActivity.this, TimelineActivity.class);
                         startActivity(intent);
                         finish();
                     }
@@ -150,7 +150,7 @@ public class HomeActivity extends AppCompatActivity {
                 if (e == null){
 //                    startActivity(intent);
 //                    finish();
-                    Log.d("HomeActivity", "Create post success");
+                    Log.d("PostActivity", "Create post success");
                 } else {
                     e.printStackTrace();
                 }
